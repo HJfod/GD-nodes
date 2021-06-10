@@ -1,6 +1,7 @@
 #pragma once
 
-#include "BrownAlertDelegate.hpp"
+#include <GDMake.h>
+#include <GUI/CCControlExtension/CCScale9Sprite.h>
 
 class PickMenu : public BrownAlertDelegate {
     protected:

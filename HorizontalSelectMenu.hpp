@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../offsets.hpp"
+#include <GDMake.h>
+#include <GUI/CCControlExtension/CCScale9Sprite.h>
 
 class HorizontalSelectMenu : public cocos2d::CCNode {
     public:
