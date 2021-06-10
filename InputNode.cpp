@@ -1,5 +1,8 @@
 #include "InputNode.hpp"
 
+using namespace gdmake;
+using namespace gdmake::extra;
+
 const char* InputNode::getString() {
     return this->m_pInput->getTextField()->getString();
 }

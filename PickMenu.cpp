@@ -1,5 +1,8 @@
 #include "PickMenu.hpp"
 
+using namespace gdmake;
+using namespace gdmake::extra;
+
 void PickMenu::setup() {
     auto menu = cocos2d::CCMenu::create();
     auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();

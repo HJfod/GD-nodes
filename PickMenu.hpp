@@ -2,6 +2,7 @@
 
 #include <GDMake.h>
 #include <GUI/CCControlExtension/CCScale9Sprite.h>
+#include "BrownAlertDelegate.hpp"
 
 class PickMenu : public BrownAlertDelegate {
     protected:
