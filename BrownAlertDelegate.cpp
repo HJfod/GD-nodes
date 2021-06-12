@@ -50,11 +50,8 @@ bool BrownAlertDelegate::init(float _w, float _h, const char* _spr, const char* 
     return true;
 }
 
-void BrownAlertDelegate::keyDown(cocos2d::enumKeyCodes key) {
-    if (key == cocos2d::enumKeyCodes::KEY_Escape)
-        return BrownAlertDelegate::onClose(nullptr);
-    
-    return gd::FLAlertLayer::keyDown(key);
+void BrownAlertDelegate::keyBackClicked() {
+    return BrownAlertDelegate::onClose(nullptr);
 }
 
 void BrownAlertDelegate::onClose(cocos2d::CCObject* pSender) {
