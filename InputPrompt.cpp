@@ -35,6 +35,10 @@ InputPrompt* InputPrompt::create(const char* title, const char* inputText, Input
     auto pRet = new InputPrompt();
 
     if (pRet && pRet->init(title, inputText, resFunc, applyText)) {
-
+        pRet->autorelease();
+        return pRet;
     }
+
+    CC_SAFE_DELETE(pRet);
+    return nullptr;
 }
