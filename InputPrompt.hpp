@@ -11,7 +11,7 @@ class InputPrompt : public BrownAlertDelegate {
         InputNode* m_pInput;
         InputResult m_pResultFunc;
 
-        void setup() override;
+        inline void setup() override {};
         void onApply(cocos2d::CCObject*);
         bool init(const char* title, const char* inputText, InputResult resFunc, const char* applyText);
 
