@@ -1,7 +1,7 @@
 #include "InputPrompt.hpp"
 
-bool InputPrompt::init(const char* inputText, InputResult resFunc, const char* applyText) {
-    if (!BrownAlertDelegate::init(220.0f, 140.0f, "GJ_square02.png"))
+bool InputPrompt::init(const char* title, const char* inputText, InputResult resFunc, const char* applyText) {
+    if (!BrownAlertDelegate::init(220.0f, 140.0f, "GJ_square02.png", title))
         return false;
 
     auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
@@ -31,10 +31,10 @@ void InputPrompt::onApply(cocos2d::CCObject*) {
     this->onClose(nullptr);
 }
 
-InputPrompt* InputPrompt::create(const char* inputText, InputResult resFunc, const char* applyText) {
+InputPrompt* InputPrompt::create(const char* title, const char* inputText, InputResult resFunc, const char* applyText) {
     auto pRet = new InputPrompt();
 
-    if (pRet && pRet->init(inputText, resFunc, applyText)) {
+    if (pRet && pRet->init(title, inputText, resFunc, applyText)) {
 
     }
 }
