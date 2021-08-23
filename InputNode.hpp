@@ -48,6 +48,9 @@ class InputNode : public cocos2d::CCNode {
         static InputNode* createMulti(float, float, const char*, const char*, int);
 
         gd::CCTextInputNode* getInputNode();
+        cocos2d::extension::CCScale9Sprite* getBG();
+
+        void setEnabled(bool);
 
         void setString(const char*);
         const char* getString();

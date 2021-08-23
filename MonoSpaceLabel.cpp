@@ -17,28 +17,38 @@ bool MonoSpaceLabel::init(
     return true;
 }
 
+// it would be so much better to just override createFontChars
+// however, for some reason that isn't virtual
+// bruh
 void MonoSpaceLabel::updateLabel() {
-    CCLabelBMFont::updateLabel();
+    this->setString(m_sInitialString, false);
 
-    CCObject* child;
-    auto index = 0;
-    auto posX = 0.0f;
-    CCARRAY_FOREACH(m_pChildren, child) {
-        auto pNode = reinterpret_cast<CCNode*>(child);
+    if (m_fWidth) {
+        float lineWidth = m_fWidth / m_fScaleX;
+        float posX = 0.0f;
 
-        if (pNode) {
-            auto c = m_sString[index];
+        CCObject* child;
+        auto index = 0;
+        CCARRAY_FOREACH(m_pChildren, child) {
+            auto pNode = reinterpret_cast<CCNode*>(child);
 
-            if (c == '\n')
-                posX = 0.0f;
-            
-            pNode->setPositionX(posX);
+            if (pNode) {
+                if (m_sString[index] == '\n') {
+                    posX = 0.0f;
+                }
 
-            posX += this->m_fCharWidth;
+                pNode->setPositionX(posX);
+
+                posX += m_fCharWidth;
+            }
+        
+            index++;
         }
 
-        index++;
+        this->setContentSize({ lineWidth, this->getContentSize().height });
     }
+
+    this->CCLabelBMFont::updateLabel();
 }
 
 void MonoSpaceLabel::setCharWidth(float value) {
@@ -93,4 +103,19 @@ MonoSpaceLabel* MonoSpaceLabel::create(
     float charWidth
 ) {
     return create(text, bmFile, charWidth, kMonoSpaceLabelDefaultTextAlignment, kCCLabelAutomaticWidth);
+}
+
+MonoSpaceLabel* MonoSpaceLabel::createWithWidth(
+    const char* text,
+    const char* bmFile,
+    float labelWidth
+) {
+    return create(text, bmFile, kMonoSpaceLabelDefaultCharWidth, kMonoSpaceLabelDefaultTextAlignment, labelWidth);
+}
+
+MonoSpaceLabel* MonoSpaceLabel::create(
+    const char* text,
+    const char* bmFile
+) {
+    return create(text, bmFile, kMonoSpaceLabelDefaultCharWidth, kMonoSpaceLabelDefaultTextAlignment, kCCLabelAutomaticWidth);
 }

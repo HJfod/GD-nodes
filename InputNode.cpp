@@ -17,6 +17,15 @@ gd::CCTextInputNode* InputNode::getInputNode() {
     return this->m_pInput;
 }
 
+cocos2d::extension::CCScale9Sprite* InputNode::getBG() {
+    return this->m_pBG;
+}
+
+void InputNode::setEnabled(bool enabled) {
+    this->m_pInput->setMouseEnabled(enabled);
+    this->m_pInput->setTouchEnabled(enabled);
+}
+
 bool InputNode::init(float _w, float _h, const char* _phtxt, const char* _fnt, const std::string & _awc, int _cc) {
     this->m_pBG = cocos2d::extension::CCScale9Sprite::create(
         "square02b_001.png", { 0.0f, 0.0f, 80.0f, 80.0f }
