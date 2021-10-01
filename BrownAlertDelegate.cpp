@@ -12,6 +12,7 @@ bool BrownAlertDelegate::init(float _w, float _h, const char* _spr, const char* 
     bg->setContentSize(this->m_pLrSize);
     bg->setPosition(winSize.width / 2, winSize.height / 2);
     this->m_pLayer->addChild(bg);
+    this->m_pBGSprite = bg;
 
     this->m_pButtonMenu = cocos2d::CCMenu::create();
     this->m_pLayer->addChild(this->m_pButtonMenu);
