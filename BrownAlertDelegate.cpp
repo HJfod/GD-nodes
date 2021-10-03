@@ -31,8 +31,8 @@ bool BrownAlertDelegate::init(float _w, float _h, const char* _spr, const char* 
 
     setup();
 
-    this->registerWithTouchDispatcher();
     cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->incrementForcePrio(2);
+    this->registerWithTouchDispatcher();
     
     auto closeSpr = cocos2d::CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
     closeSpr->setScale(1.0f);
